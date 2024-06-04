@@ -13,6 +13,8 @@ import {
   SignIn,
   SignUp,
   TermsOfUse,
+  ShipmentDetails,
+  AddNewShipment,
 } from "../pages";
 
 import { routes } from "../constants";
@@ -37,7 +39,12 @@ export const AppRouter = () => {
         {/* Private Route for authenticated users */}
         <Route element={<PrivateRoute isAuthenticated={isAuthenticated} />}>
           <Route index element={<Home />} />
+          <Route path={routes.addNewShipment} element={<AddNewShipment />} />
           <Route path={routes.about} element={<About />} />
+          <Route
+            path={`${routes.shipments}/:shipmentId`}
+            element={<ShipmentDetails />}
+          />
         </Route>
         {/* Auth page route */}
         <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>

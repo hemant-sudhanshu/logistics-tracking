@@ -30,6 +30,43 @@ export const strings = {
       lastName: "Last name is required",
     },
     acceptTerms: "Please accept terms of use and privacy policy.",
+    shipmentId: {
+      required: "Shipment Id is required",
+      invalid: "Invalid Shipment Id",
+    },
+    title: {
+      required: "Shipment Title is required",
+      invalid: "Invalid Shipment Title",
+    },
+    date: {
+      required: "Shipment date is required",
+      invalid: "Invalid Shipment date",
+    },
+    deliveryDate: {
+      required: "Delivery date is required",
+      invalid: "Invalid delivery date",
+    },
+    origin: {
+      required: "Origin is required",
+    },
+    houseNo: {
+      required: "House/Building/Flat No is required",
+    },
+    address1: {
+      required: "Address1 is required",
+    },
+    destinationCity: {
+      required: "Destination city is required",
+    },
+    destinationState: {
+      required: "Destination state is required",
+    },
+    destinationPincode: {
+      required: "Destination pincode is required",
+    },
+    status: {
+      required: "Shipment status is required",
+    },
   },
   auth: {
     common: {
@@ -61,6 +98,37 @@ export const strings = {
       termsOfUse: "Terms of Use",
       privacyPolicy: "Privacy Policy",
       about: "About",
+      addNew: "+ Add New",
+      addShipment: "Add Shipment",
+      addShipmentSuccess: "Shipment added succesfully!",
+      id: "ID",
+      shipmentId: "Shipment Id",
+      date: "Date",
+      title: "Title",
+      incoming: "Incoming",
+      outgoing: "Outgoing",
+      origin: "Origin",
+      destination: "Destination",
+      shipmentDate: "Shipment Date",
+      deliveryDate: "Delivery Date",
+      status: "Status",
+      note: "Note",
+      type: "Type",
+      instructions: "Instructions",
+      transit: "Transit",
+      delivered: "Delivered",
+      delayed: "Delayed",
+      houseNo: "House/Building/Flat No",
+      address1: "Address 1",
+      address2: "Address 2",
+      state: "State",
+      pinCode: "Pin Code",
+      shipmentStatus: "Shipment Status",
+      selectStatus: "Select Status",
+      destinationCity: "Destination City",
+      selectCity: "Select City",
+      shipmentAddSuccess: "Shipment added successfully!",
+      shipmentUpdateSuccess: "Shipment updated successfully!",
     },
     home: {
       title: "Home",

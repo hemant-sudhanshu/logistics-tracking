@@ -3,8 +3,9 @@ export const routes = {
   signIn: "/signin",
   signUp: "/signup",
   about: "/about",
+  addNewShipment: "/add-new-shipment",
   termsCondition: "/terms-and-condition",
   privacyPolicy: "/privacy-policy",
-  products: "/products",
+  shipments: "/shipments",
   cart: "/cart",
 };
