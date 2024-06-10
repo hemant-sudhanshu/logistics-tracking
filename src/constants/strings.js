@@ -105,6 +105,7 @@ export const strings = {
       shipmentId: "Shipment Id",
       date: "Date",
       title: "Title",
+      all: "All",
       incoming: "Incoming",
       outgoing: "Outgoing",
       origin: "Origin",

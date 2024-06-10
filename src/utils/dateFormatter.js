@@ -6,3 +6,4 @@ export const formatDate = (dateString) => {
 
   return `${day}-${month}-${year}`;
 };
+

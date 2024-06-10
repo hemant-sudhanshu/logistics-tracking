@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { routes, strings } from "../../../constants";
 import { MenuItem, ProfileMenu } from "../../../pages";
 import { MenuIcon } from "../../../assets/svgs";
 import logo from "../../../logo.svg";
-import { useCartQuery, useUserQuery } from "../../../queries";
+import { useUserQuery } from "../../../queries";
 import { useAuthContext } from "../../../hooks";
 
 export const NavBar = ({ sticky = true }) => {
@@ -68,7 +68,7 @@ export const NavBar = ({ sticky = true }) => {
       } m-2 w-full md:block md:w-auto`}
       id="navbar-default"
     >
-      <ul className="mt-4 flex flex-col rounded-lg border border-border bg-secondary p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-background md:p-0 rtl:space-x-reverse dark:border-border-dark dark:bg-secondary-dark md:dark:bg-background-dark">
+      <ul className="mt-4 flex flex-col rounded-lg border border-border bg-secondary p-4 font-medium md:mt-0 md:flex-row md:space-x-4 md:border-0 md:bg-background md:p-0 rtl:space-x-reverse dark:border-border-dark dark:bg-secondary-dark md:dark:bg-background-dark">
         <MenuItem href={routes.root}>{home.title}</MenuItem>
         <MenuItem href={routes.addNewShipment}>{homeCommon.addNew}</MenuItem>
         <MenuItem href={routes.about}>{homeCommon.about}</MenuItem>

@@ -1,7 +1,12 @@
 import React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import { data, routes, shipmentSchema, strings } from "../../../../constants";
+import {
+  staticData,
+  routes,
+  shipmentSchema,
+  strings,
+} from "../../../../constants";
 import {
   Button,
   Checkbox,
@@ -37,7 +42,7 @@ export const ShipmentForm = () => {
     primary: { common },
   } = strings;
 
-  const { cities, statuses } = data;
+  const { cities, statuses } = staticData;
 
   // Calculate min and max date values for input
   const currentDate = new Date();

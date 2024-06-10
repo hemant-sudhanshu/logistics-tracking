@@ -4,13 +4,13 @@ import useApi, { endPoints } from "../../api";
 /**
  * Custom hook for querying the shipments.
  */
-const useShipmentQuery = () => {
+const useShipmentQuery = (reqQuery) => {
   const api = useApi();
 
   // Function to fetch shipments
   const getShipmentsList = async () => {
     try {
-      const res = await api.get(`${endPoints.primary.shipments}`);
+      const res = await api.get(`${endPoints.primary.shipments}?${reqQuery}`);
       return res.data;
     } catch (error) {
       // Handle errors gracefully
@@ -20,7 +20,7 @@ const useShipmentQuery = () => {
 
   // Execute the query
   return useQuery({
-    queryKey: ["ShipmentsQueryKey"],
+    queryKey: ["ShipmentsQueryKey", reqQuery],
     queryFn: getShipmentsList,
   });
 };

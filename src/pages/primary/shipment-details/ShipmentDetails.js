@@ -10,16 +10,14 @@ export const ShipmentDetails = () => {
   const {
     primary: { common },
   } = strings;
+
   // Navigation hook
   const { shipmentId } = useParams();
 
   // API call to fetch shipmentdetails
-  const {
-    data: shipment,
-    isPending,
-    isError,
-    isSuccess,
-  } = useShipmentDetailsQuery({ id: shipmentId });
+  const { data: shipment, isPending } = useShipmentDetailsQuery({
+    id: shipmentId,
+  });
 
   // Navigation hook
   const navigate = useNavigate();
@@ -43,7 +41,7 @@ export const ShipmentDetails = () => {
   };
 
   return (
-    <div className="m-4 p-4 bg-secondary rounded text-black">
+    <div className="m-4 p-4 bg-secondary rounded text-black max-w-6xl mx-auto">
       {isPending || !shipment ? (
         <Spinner />
       ) : (
@@ -125,14 +123,14 @@ export const ShipmentDetails = () => {
                 <ShipmentProperty
                   title={common.note}
                   data={shipment.notes}
-                  styleClass="md:mr-auto"
+                  styleClass=""
                 />
               </div>
               <div className="flex flex-col md:flex-row justify-between">
                 <ShipmentProperty
                   title={common.instructions}
                   data={shipment.instructions}
-                  styleClass="md:mr-auto"
+                  styleClass=""
                 />
               </div>
 

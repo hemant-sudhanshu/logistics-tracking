@@ -5,3 +5,5 @@ export * from "./Button";
 export * from "./Checkbox";
 export * from "./Spinner";
 export * from "./Error";
+export * from "./TabBar";
+export * from "./FilterButton";
