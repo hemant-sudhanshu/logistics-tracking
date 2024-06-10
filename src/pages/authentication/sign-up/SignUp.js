@@ -45,10 +45,6 @@ export const SignUp = () => {
     onSubmit: async (values, { setSubmitting }) => {
       // Call signup user api
       try {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
         await mutateAsync({
           firstName: values.firstName,
           lastName: values.lastName,
@@ -62,7 +58,6 @@ export const SignUp = () => {
       } catch (error) {
         // Handle sign up failure
         console.log(error);
-        alert(error.message);
       }
     },
   });

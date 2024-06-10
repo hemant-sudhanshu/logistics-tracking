@@ -14,6 +14,6 @@ export const endPoints = {
   /** Endpoints for app. */
   primary: {
     /** Get all shipments */
-    shipments: "api/shipments",
+    shipments: "/shipments",
   },
 };
