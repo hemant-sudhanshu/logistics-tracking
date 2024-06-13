@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { routes, strings } from "../../../constants";
-import { MenuItem, ProfileMenu } from "../../../pages";
+import { MenuItem, ProfileMenu } from "../..";
 import { MenuIcon } from "../../../assets/svgs";
 import logo from "../../../logo.svg";
 import { useUserQuery } from "../../../queries";

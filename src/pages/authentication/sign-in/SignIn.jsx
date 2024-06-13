@@ -41,10 +41,6 @@ export const SignIn = () => {
     onSubmit: async (values, { setSubmitting }) => {
       // Call signin user api
       try {
-        // setTimeout(() => {
-        //   alert(JSON.stringify(values, null, 2));
-        //   setSubmitting(false);
-        // }, 400);
         // Handle form submission
         const user = await mutateAsync({
           email: values.email,
