@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { routes, schema, strings } from "../../../constants";
 import { Button, Checkbox, Input, Spinner } from "../../../components";
 
-import { useSignUpMutation } from "../../../queries";
+import { useSignUpMutation } from "../../../hooks/queries";
 import { showSuccessToast } from "../../../utils";
 /**
  * Yup schema for sign-up page validation

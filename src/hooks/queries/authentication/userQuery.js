@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useApi, { endPoints } from "../../api";
+import useApi, { endPoints } from "../../../api";
 
 /**
  * Custom hook for retrieving authenticated user information.

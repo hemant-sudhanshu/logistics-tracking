@@ -6,7 +6,7 @@ import { routes, schema, strings } from "../../../constants";
 import { Button, Input, Spinner } from "../../../components";
 
 import { useAuthContext } from "../../../hooks";
-import { useSignInMutation } from "../../../queries";
+import { useSignInMutation } from "../../../hooks/queries";
 import { showSuccessToast } from "../../../utils";
 
 /**

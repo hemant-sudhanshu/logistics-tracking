@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useShipmentQuery } from "../../../queries";
+import { useShipmentQuery } from "../../../hooks/queries";
 import { Spinner, TabBar } from "../../../components";
 import { FilterDropdown, ShipmentsList, SortingDropdown } from "./components";
 import { strings, staticData } from "../../../constants";

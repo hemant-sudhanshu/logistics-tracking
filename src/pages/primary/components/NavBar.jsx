@@ -4,7 +4,7 @@ import { routes, strings } from "../../../constants";
 import { MenuItem, ProfileMenu } from "../..";
 import { MenuIcon } from "../../../assets/svgs";
 import logo from "../../../logo.svg";
-import { useUserQuery } from "../../../queries";
+import { useUserQuery } from "../../../hooks/queries";
 import { useAuthContext } from "../../../hooks";
 
 export const NavBar = ({ sticky = true }) => {

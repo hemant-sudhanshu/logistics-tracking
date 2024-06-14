@@ -15,7 +15,7 @@ import {
   Spinner,
   TextArea,
 } from "../../../../components";
-import { useShipmentsMutation } from "../../../../queries";
+import { useShipmentsMutation } from "../../../../hooks/queries";
 import { showSuccessToast } from "../../../../utils";
 import { useNavigate } from "react-router-dom";
 

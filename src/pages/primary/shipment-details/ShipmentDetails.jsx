@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useShipmentDetailsQuery, useShipmentMutation } from "../../../queries";
+import {
+  useShipmentDetailsQuery,
+  useShipmentMutation,
+} from "../../../hooks/queries";
 import { Button, Spinner } from "../../../components";
 import { routes, strings } from "../../../constants";
 import { ShipmentProperty } from "../components";

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import useApi, { endPoints } from "../../api";
+import useApi, { endPoints } from "../../../api";
 
 /**
  * Custom hook for querying the shipments.

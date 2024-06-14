@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import useApi, { endPoints } from "../../api";
+import useApi, { endPoints } from "../../../api";
 
 /**
  * Custom hook for user sign-up mutation.
