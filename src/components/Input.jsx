@@ -4,10 +4,19 @@ import React from "react";
  * Input component renders an input element with optional label, and error message.
  * @param props - Props for the Input component.
  */
-export const Input = (props) => {
-  const { type = "text", required = false, id, label, error, ...rest } = props;
+export const Input = React.memo((props) => {
+  const {
+    type = "text",
+    required = false,
+    id,
+    label,
+    error,
+    className = "",
+    ...rest
+  } = props;
+
   return (
-    <div className="flex-1 pb-2">
+    <div className={`flex-1 pb-2 ${className}`}>
       <label className="block mb-1" htmlFor={id}>
         {label}
 
@@ -26,4 +35,4 @@ export const Input = (props) => {
       <p className="text-xs text-error">{error}</p>
     </div>
   );
-};
+}); 

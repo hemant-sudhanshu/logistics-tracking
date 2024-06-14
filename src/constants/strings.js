@@ -30,6 +30,10 @@ export const strings = {
       lastName: "Last name is required",
     },
     acceptTerms: "Please accept terms of use and privacy policy.",
+    characters: {
+      min3: "Must be 3 characters or more",
+      max15: "Must be 15 characters or less",
+    },
     shipmentId: {
       required: "Shipment Id is required",
       invalid: "Invalid Shipment Id",
@@ -93,6 +97,7 @@ export const strings = {
     },
   },
   primary: {
+    tabs: ["All", "Incoming", "Outgoing"],
     common: {
       signOut: "Sign Out",
       termsOfUse: "Terms of Use",

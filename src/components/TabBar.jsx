@@ -1,7 +1,8 @@
 import React from "react";
 
-export const TabBar = (props) => {
+export const TabBar = React.memo((props) => {
   const { activeTab, tabs, tabHandler } = props;
+
   return (
     <div className="flex border-b text-light space-x-4">
       {tabs.map((item, index) => (
@@ -19,4 +20,4 @@ export const TabBar = (props) => {
       ))}
     </div>
   );
-};
+});

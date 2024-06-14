@@ -1,6 +1,6 @@
 import React from "react";
 
-export const DropDown = (props) => {
+export const DropDown = React.memo((props) => {
   const {
     required = false,
     id,
@@ -9,11 +9,12 @@ export const DropDown = (props) => {
     options,
     selectedValue,
     error = "",
+    className = "",
     ...rest
   } = props;
 
   return (
-    <div className="flex-1 pb-2">
+    <div className={`flex-1 pb-2 ${className}`}>
       <label className="block mb-1" htmlFor={id}>
         {label}
         {/* Conditionally render asterisk */}
@@ -40,4 +41,4 @@ export const DropDown = (props) => {
       <p className="text-xs text-error">{error}</p>
     </div>
   );
-};
+});

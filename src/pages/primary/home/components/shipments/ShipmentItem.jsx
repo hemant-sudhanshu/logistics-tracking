@@ -4,7 +4,7 @@ import { routes, strings } from "../../../../../constants";
 import { ShipmentProperty } from "../../../components";
 import { formatDate } from "../../../../../utils";
 
-export const ShipmentItem = ({ shipment }) => {
+export const ShipmentItem = React.memo(({ shipment }) => {
   const {
     primary: { common },
   } = strings;
@@ -81,4 +81,4 @@ export const ShipmentItem = ({ shipment }) => {
       </div>
     </button>
   );
-};
+});

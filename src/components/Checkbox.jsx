@@ -1,3 +1,5 @@
+import React from "react";
+
 /**
  * Checkbox component.
  * @param id - The ID for the checkbox input.
@@ -5,7 +7,7 @@
  * @param className - Additional CSS class names for styling.
  * @param rest - Additional props to pass to the checkbox input element.
  */
-export const Checkbox = ({ id, error, children, className, ...rest }) => {
+export const Checkbox = React.memo(({ id, error, children, className, ...rest }) => {
   return (
     <div className={`mb-4 ${className}`}>
       <div className="flex items-center">
@@ -28,4 +30,4 @@ export const Checkbox = ({ id, error, children, className, ...rest }) => {
       )}
     </div>
   );
-};
+});

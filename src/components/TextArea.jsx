@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TextArea = (props) => {
+export const TextArea = React.memo((props) => {
   const { type = "text", required = false, id, label, error, ...rest } = props;
   return (
     <div className="flex-1">
@@ -22,4 +22,4 @@ export const TextArea = (props) => {
       <p className="text-xs text-error">{error}</p>
     </div>
   );
-};
+});

@@ -2,13 +2,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { toast } from "react-toastify";
 import { routes, schema, strings } from "../../../constants";
 import { Button, Input, Spinner } from "../../../components";
 
 import { useAuthContext } from "../../../hooks";
 import { useSignInMutation } from "../../../queries";
-import { showSuccessToast, showErrorToast } from "../../../utils";
+import { showSuccessToast } from "../../../utils";
 
 /**
  * Yup schema for sign-up page validation
@@ -88,7 +87,8 @@ export const SignIn = () => {
           label={common.emailAddress}
           value={formik.values.email}
           onChange={formik.handleChange}
-          error={formik.errors.email}
+          error={formik.touched.email && formik.errors.email}
+          {...formik.getFieldProps("email")}
           autoComplete="email"
           required
         />
@@ -100,7 +100,8 @@ export const SignIn = () => {
           label={common.password}
           value={formik.values.password}
           onChange={formik.handleChange}
-          error={formik.errors.password}
+          error={formik.touched.password && formik.errors.password}
+          {...formik.getFieldProps("password")}
           autoComplete="new-password"
           required
         />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useShipmentQuery } from "../../../queries";
 import { Spinner, TabBar } from "../../../components";
 import { FilterDropdown, ShipmentsList, SortingDropdown } from "./components";
@@ -6,7 +6,7 @@ import { strings, staticData } from "../../../constants";
 
 export const Home = () => {
   const {
-    primary: { common },
+    primary: { common, tabs },
   } = strings;
 
   const { filterOptions, sortingOptions } = staticData;
@@ -23,7 +23,7 @@ export const Home = () => {
     isSuccess,
   } = useShipmentQuery(reqQuery);
 
-  const creteReqQuery = () => {
+  const createReqQuery = () => {
     var query = "";
     if (activeTab !== common.all) {
       query += `isIncoming=${activeTab === common.incoming}`;
@@ -31,34 +31,35 @@ export const Home = () => {
     query += `&filter=${activeFilter}`;
     query += `&sort=${JSON.stringify(activeOption.value)}`;
 
-    console.log(activeOption.value);
-
     console.log("Query..:", query);
     setReqQuery(query);
   };
 
   useEffect(() => {
-    creteReqQuery();
+    console.log("useEffect...");
+    createReqQuery();
   }, [activeTab, activeFilter, activeOption]);
 
-  const handleTabSwitch = (type) => {
+  const handleTabSwitch = useCallback((type) => {
     setActiveTab(type);
-  };
+  }, []);
 
-  const handleFilterClick = (filter) => {
+  const handleFilterClick = useCallback((filter) => {
     setActiveFilter(filter);
-  };
+  }, []);
 
-  const handleSortingClick = (option) => {
+  const handleSortingClick = useCallback((option) => {
     setActiveOption(option);
-  };
+  }, []);
+
+  console.log("Home");
 
   return (
     <div className="p-4 max-w-6xl mx-auto">
       <div className="flex flex-col p-2 space-y-2  md:space-x-2  md:flex-row justify-between">
         <TabBar
           activeTab={activeTab}
-          tabs={[common.all, common.incoming, common.outgoing]}
+          tabs={tabs}
           tabHandler={handleTabSwitch}
         />
 

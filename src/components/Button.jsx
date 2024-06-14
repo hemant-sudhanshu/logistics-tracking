@@ -1,8 +1,10 @@
+import React from "react";
+
 /**
  * Button component renders a button element with specified title.
  * @param props - Props for the Button component.
  */
-export const Button = ({ title, className, ...rest }) => {
+export const Button = React.memo(({ title, className, ...rest }) => {
   return (
     <button
       type="button"
@@ -12,4 +14,4 @@ export const Button = ({ title, className, ...rest }) => {
       {title}
     </button>
   );
-};
+});

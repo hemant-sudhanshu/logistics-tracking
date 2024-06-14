@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
  * @param href The URL the menu item links to.
  * @param children The content of the menu item.
  */
-export const MenuItem = ({ href, children }) => {
+export const MenuItem = React.memo(({ href, children }) => {
   // Retrieve pathname to match with href
   const location = useLocation();
   const isActive = location.pathname === href;
@@ -28,4 +28,4 @@ export const MenuItem = ({ href, children }) => {
       </Link>
     </li>
   );
-};
+});

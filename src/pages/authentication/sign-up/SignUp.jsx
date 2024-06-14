@@ -88,7 +88,8 @@ export const SignUp = () => {
             label={common.fName}
             value={formik.values.firstName}
             onChange={formik.handleChange}
-            error={formik.errors.firstName}
+            error={formik.touched.firstName && formik.errors.firstName}
+            {...formik.getFieldProps("firstName")}
             required
           />
           {/* Spacer for responsive design */}
@@ -98,7 +99,8 @@ export const SignUp = () => {
             label={common.lName}
             value={formik.values.lastName}
             onChange={formik.handleChange}
-            error={formik.errors.lastName}
+            error={formik.touched.lastName && formik.errors.lastName}
+            {...formik.getFieldProps("lastName")}
             required
           />
         </div>
@@ -109,7 +111,8 @@ export const SignUp = () => {
           label={common.emailAddress}
           value={formik.values.email}
           onChange={formik.handleChange}
-          error={formik.errors.email}
+          error={formik.touched.email && formik.errors.email}
+          {...formik.getFieldProps("email")}
           autoComplete="email"
           required
         />
@@ -121,7 +124,8 @@ export const SignUp = () => {
           label={common.password}
           value={formik.values.password}
           onChange={formik.handleChange}
-          error={formik.errors.password}
+          error={formik.touched.password && formik.errors.password}
+          {...formik.getFieldProps("password")}
           autoComplete="new-password"
           required
         />
@@ -131,7 +135,10 @@ export const SignUp = () => {
           label={common.confirmPassword}
           value={formik.values.confirmPassword}
           onChange={formik.handleChange}
-          error={formik.errors.confirmPassword}
+          error={
+            formik.touched.confirmPassword && formik.errors.confirmPassword
+          }
+          {...formik.getFieldProps("confirmPassword")}
           autoComplete="new-password"
           required
         />
@@ -141,7 +148,8 @@ export const SignUp = () => {
           id="acceptTerms"
           checked={formik.values.acceptTerms}
           onChange={formik.handleChange}
-          error={formik.errors?.acceptTerms}
+          error={formik.touched.acceptTerms && formik.errors?.acceptTerms}
+          {...formik.getFieldProps("acceptTerms")}
         >
           <label
             htmlFor="acceptTerms"
