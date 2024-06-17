@@ -22,7 +22,7 @@ export const FilterDropdown = React.memo(
             className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
             onClick={toggleDropdown}
           >
-            {activeFilter}
+            {activeFilter.title}
             <DownArrow className="h-5 w-5 fill-black group-hover:fill-color ml-2" />
           </button>
         </div>
@@ -37,11 +37,11 @@ export const FilterDropdown = React.memo(
             <div className="py-1" role="none">
               {options.map((filter) => (
                 <button
-                  key={filter}
+                  key={filter.filterKey}
                   onClick={() => handleClick(filter)}
                   className="block px-4 py-2 text-sm text-gray-700 w-full text-left hover:bg-gray-100 focus:outline-none"
                 >
-                  {filter}
+                  {filter.title}
                 </button>
               ))}
             </div>

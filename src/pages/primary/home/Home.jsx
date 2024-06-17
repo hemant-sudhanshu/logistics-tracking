@@ -1,17 +1,27 @@
 import { useCallback, useEffect, useState } from "react";
+import {
+  redirect,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { useShipmentQuery } from "../../../hooks/queries";
 import { Spinner, TabBar } from "../../../components";
 import { FilterDropdown, ShipmentsList, SortingDropdown } from "./components";
-import { strings, staticData } from "../../../constants";
+import { strings, staticData, routes } from "../../../constants";
 
 export const Home = () => {
   const {
     primary: { common, tabs },
   } = strings;
 
+  const navigate = useNavigate();
+  // const location = useLocation();
+
   const { filterOptions, sortingOptions } = staticData;
 
-  const [activeTab, setActiveTab] = useState(common.all);
+  let [searchParams, setSearchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState(tabs[0]);
   const [reqQuery, setReqQuery] = useState("");
   const [activeFilter, setActiveFilter] = useState(filterOptions[0]);
   const [activeOption, setActiveOption] = useState(sortingOptions[0]);
@@ -23,36 +33,71 @@ export const Home = () => {
     isSuccess,
   } = useShipmentQuery(reqQuery);
 
+  // Parse query parameters to set initial state
+  useEffect(() => {
+    createReqQuery();
+  }, [searchParams]);
+
   const createReqQuery = () => {
     var query = "";
-    if (activeTab !== common.all) {
-      query += `isIncoming=${activeTab === common.incoming}`;
+    const type = searchParams.get("type");
+    const timeStamp = searchParams.get("timeStamp");
+    const sortKey = searchParams.get("sortKey");
+
+    if (type) {
+      setSelectedTab(type);
+      query += `type=${searchParams.get("type")}`;
     }
-    query += `&filter=${activeFilter}`;
-    query += `&sort=${JSON.stringify(activeOption.value)}`;
+
+    if (timeStamp) {
+      setSelectedFilter(timeStamp);
+      if (query.length > 0) {
+        query += "&";
+      }
+      query += `timeStamp=${timeStamp}`;
+    }
+
+    if (sortKey) {
+      setSelectedSortOption(sortKey);
+      if (query.length > 0) {
+        query += "&";
+      }
+      query += `sortby=${sortKey}`;
+    }
 
     console.log("Query..:", query);
     setReqQuery(query);
   };
 
-  useEffect(() => {
-    console.log("useEffect...");
-    createReqQuery();
-  }, [activeTab, activeFilter, activeOption]);
+  const setSelectedTab = (keyName) => {
+    const tab = tabs.find((item) => item.key === keyName);
+    setActiveTab(tab);
+  };
+
+  const setSelectedFilter = (keyName) => {
+    const filter = filterOptions.find((item) => item.filterKey === keyName);
+    setActiveFilter(filter);
+  };
+
+  const setSelectedSortOption = (keyName) => {
+    const sortOption = sortingOptions.find((item) => item.sortKey === keyName);
+    setActiveOption(sortOption);
+  };
 
   const handleTabSwitch = useCallback((type) => {
-    setActiveTab(type);
-  }, []);
+    searchParams.set("type", type.key);
+    setSearchParams(searchParams);
+  });
 
   const handleFilterClick = useCallback((filter) => {
-    setActiveFilter(filter);
-  }, []);
+    searchParams.set("timeStamp", filter.filterKey);
+    setSearchParams(searchParams);
+  });
 
   const handleSortingClick = useCallback((option) => {
-    setActiveOption(option);
-  }, []);
-
-  console.log("Home");
+    searchParams.set("sortKey", option.sortKey);
+    setSearchParams(searchParams);
+  });
 
   return (
     <div className="p-4 max-w-6xl mx-auto">

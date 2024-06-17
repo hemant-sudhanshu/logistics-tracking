@@ -97,7 +97,20 @@ export const strings = {
     },
   },
   primary: {
-    tabs: ["All", "Incoming", "Outgoing"],
+    tabs: [
+      {
+        title: "All",
+        key: "all",
+      },
+      {
+        title: "Incoming",
+        key: "incoming",
+      },
+      {
+        title: "Outgoing",
+        key: "outgoing",
+      },
+    ],
     common: {
       signOut: "Sign Out",
       termsOfUse: "Terms of Use",
