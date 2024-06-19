@@ -1,22 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
-import {
-  redirect,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useShipmentQuery } from "../../../hooks/queries";
 import { Spinner, TabBar } from "../../../components";
 import { FilterDropdown, ShipmentsList, SortingDropdown } from "./components";
-import { strings, staticData, routes } from "../../../constants";
+import { strings, staticData } from "../../../constants";
 
 export const Home = () => {
   const {
-    primary: { common, tabs },
+    primary: { tabs },
   } = strings;
-
-  const navigate = useNavigate();
-  // const location = useLocation();
 
   const { filterOptions, sortingOptions } = staticData;
 

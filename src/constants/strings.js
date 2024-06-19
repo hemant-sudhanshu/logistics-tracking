@@ -132,6 +132,7 @@ export const strings = {
       title: "Title",
       all: "All",
       action: "Action",
+      actions: "Actions",
       location: "Location",
       incoming: "Incoming",
       outgoing: "Outgoing",
@@ -161,6 +162,8 @@ export const strings = {
       shipmentAddSuccess: "Shipment added successfully!",
       shipmentUpdateSuccess: "Shipment updated successfully!",
       updateStatus: "Update Status",
+      shipmentScannedAt: "Shipment scanned at",
+      shipment: "Shipment",
     },
     home: {
       title: "Home",

@@ -5,7 +5,11 @@ import { Spinner } from "../../../components";
 import { routes, strings } from "../../../constants";
 import { ShipmentProperty, ShipmentStatusProperty } from "../components";
 import { formatDate } from "../../../utils";
-import { ShipmentAddress, UpdateStatusButton } from "./components";
+import {
+  ShipmentActions,
+  ShipmentAddress,
+  UpdateStatusButton,
+} from "./components";
 
 export const ShipmentDetails = () => {
   const {
@@ -91,7 +95,7 @@ export const ShipmentDetails = () => {
 
             {/* Actions */}
             {shipment.actions && shipment.actions.length > 0 && (
-              <h1>{JSON.stringify(shipment.actions)}</h1>
+              <ShipmentActions actions={shipment.actions} />
             )}
 
             {/* Notes, Instructions */}
@@ -113,7 +117,7 @@ export const ShipmentDetails = () => {
             </div>
 
             {/* Status update */}
-            {shipment.status !== common.delivered && (
+            {shipment.status !== common.delivered.toLowerCase() && (
               <UpdateStatusButton
                 title={common.updateStatus}
                 onClick={handleStatusUpdate}
