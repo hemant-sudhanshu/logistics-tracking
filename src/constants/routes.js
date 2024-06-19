@@ -7,5 +7,6 @@ export const routes = {
   termsCondition: "/terms-and-condition",
   privacyPolicy: "/privacy-policy",
   shipments: "/shipments",
+  shipmentAction: "/shipment-action",
   cart: "/cart",
 };

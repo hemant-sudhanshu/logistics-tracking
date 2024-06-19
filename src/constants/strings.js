@@ -30,6 +30,10 @@ export const strings = {
       lastName: "Last name is required",
     },
     acceptTerms: "Please accept terms of use and privacy policy.",
+    characters: {
+      min3: "Must be 3 characters or more",
+      max15: "Must be 15 characters or less",
+    },
     shipmentId: {
       required: "Shipment Id is required",
       invalid: "Invalid Shipment Id",
@@ -67,6 +71,12 @@ export const strings = {
     status: {
       required: "Shipment status is required",
     },
+    action: {
+      required: "Shipment action is required",
+    },
+    location: {
+      required: "Shipment location is required",
+    },
   },
   auth: {
     common: {
@@ -93,6 +103,20 @@ export const strings = {
     },
   },
   primary: {
+    tabs: [
+      {
+        title: "All",
+        key: "all",
+      },
+      {
+        title: "Incoming",
+        key: "incoming",
+      },
+      {
+        title: "Outgoing",
+        key: "outgoing",
+      },
+    ],
     common: {
       signOut: "Sign Out",
       termsOfUse: "Terms of Use",
@@ -100,16 +124,22 @@ export const strings = {
       about: "About",
       addNew: "+ Add New",
       addShipment: "Add Shipment",
+      addAction: "Add Action",
       addShipmentSuccess: "Shipment added succesfully!",
       id: "ID",
       shipmentId: "Shipment Id",
       date: "Date",
       title: "Title",
       all: "All",
+      action: "Action",
+      actions: "Actions",
+      location: "Location",
       incoming: "Incoming",
       outgoing: "Outgoing",
       origin: "Origin",
       destination: "Destination",
+      originAddress: "Origin Address",
+      destinationAddress: "Destination Address",
       shipmentDate: "Shipment Date",
       deliveryDate: "Delivery Date",
       status: "Status",
@@ -128,8 +158,12 @@ export const strings = {
       selectStatus: "Select Status",
       destinationCity: "Destination City",
       selectCity: "Select City",
+      selectAction: "Select Action",
       shipmentAddSuccess: "Shipment added successfully!",
       shipmentUpdateSuccess: "Shipment updated successfully!",
+      updateStatus: "Update Status",
+      shipmentScannedAt: "Shipment scanned at",
+      shipment: "Shipment",
     },
     home: {
       title: "Home",

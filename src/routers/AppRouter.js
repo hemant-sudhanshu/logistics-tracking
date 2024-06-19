@@ -20,6 +20,7 @@ import {
 import { routes } from "../constants";
 import { useAuthContext } from "../hooks";
 import { PrivateRoute, PublicRoutes, PolicyRoutes } from "../routers";
+import { ShipmentAction } from "../pages/primary/shipment-action";
 
 /**
  * AppRouter component manages the routing configuration of the application.
@@ -44,6 +45,10 @@ export const AppRouter = () => {
           <Route
             path={`${routes.shipments}/:shipmentId`}
             element={<ShipmentDetails />}
+          />
+          <Route
+            path={`${routes.shipmentAction}/:shipmentId`}
+            element={<ShipmentAction />}
           />
         </Route>
         {/* Auth page route */}
