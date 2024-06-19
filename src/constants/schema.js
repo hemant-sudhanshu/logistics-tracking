@@ -21,6 +21,8 @@ const {
     destinationState,
     destinationPincode,
     status,
+    action,
+    location,
   },
 } = strings;
 
@@ -63,4 +65,6 @@ export const shipmentSchema = {
   destinationState: Yup.string().required(destinationState.required),
   destinationPincode: Yup.string().required(destinationPincode.required),
   status: Yup.string().required(status.required),
+  action: Yup.string().required(action.required),
+  location: Yup.string().required(location.required),
 };

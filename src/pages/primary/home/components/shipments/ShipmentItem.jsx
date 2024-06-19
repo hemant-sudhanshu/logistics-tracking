@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { routes, strings } from "../../../../../constants";
-import { ShipmentProperty } from "../../../components";
+import { ShipmentProperty, ShipmentStatusProperty } from "../../../components";
 import { formatDate } from "../../../../../utils";
 
 export const ShipmentItem = React.memo(({ shipment }) => {
@@ -41,12 +41,12 @@ export const ShipmentItem = React.memo(({ shipment }) => {
           <div className="flex flex-col items-start md:flex-row md:justify-between">
             <ShipmentProperty
               title={common.origin}
-              data={shipment.origin}
+              data={shipment.originAddress.city}
               styleClass=""
             />
             <ShipmentProperty
               title={common.destination}
-              data={shipment.destination}
+              data={shipment.destinationAddress.city}
               styleClass=""
             />
           </div>
@@ -64,9 +64,9 @@ export const ShipmentItem = React.memo(({ shipment }) => {
           </div>
 
           <div className="flex flex-col items-start md:flex-row md:justify-between">
-            <ShipmentProperty
+            <ShipmentStatusProperty
               title={common.status}
-              data={shipment.status}
+              status={shipment.status}
               styleClass=""
             />
             <ShipmentProperty

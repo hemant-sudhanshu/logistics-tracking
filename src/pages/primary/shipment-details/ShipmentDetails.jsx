@@ -1,13 +1,11 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  useShipmentDetailsQuery,
-  useShipmentMutation,
-} from "../../../hooks/queries";
-import { Button, Spinner } from "../../../components";
+import { useShipmentDetailsQuery } from "../../../hooks/queries";
+import { Spinner } from "../../../components";
 import { routes, strings } from "../../../constants";
-import { ShipmentProperty } from "../components";
-import { formatDate, showSuccessToast } from "../../../utils";
+import { ShipmentProperty, ShipmentStatusProperty } from "../components";
+import { formatDate } from "../../../utils";
+import { ShipmentAddress, UpdateStatusButton } from "./components";
 
 export const ShipmentDetails = () => {
   const {
@@ -25,32 +23,24 @@ export const ShipmentDetails = () => {
   // Navigation hook
   const navigate = useNavigate();
 
-  const { mutateAsync } = useShipmentMutation({ id: shipmentId });
-
-  const handleStatusUpdate = async ({ status }) => {
-    //   Call API to update status..
-    console.log("status....", status);
-    const values = { status };
-
-    try {
-      await mutateAsync(values);
-      // If shipment add succeeds, show success message
-      showSuccessToast({ message: common.shipmentUpdateSuccess });
-      navigate(routes.root, { replace: false });
-    } catch (error) {
-      // Handle sign up failure
-      console.log(error);
-    }
+  const handleStatusUpdate = async () => {
+    // Navigate to shipment action page
+    navigate(`${routes.shipmentAction}/${shipmentId}`, { replace: false });
   };
 
   return (
-    <div className="m-4 p-4 bg-secondary rounded text-black max-w-6xl mx-auto">
+    <div className="m-4 p-4 bg-secondary rounded text-black max-w-6xl mx-auto md:mt-10">
       {isPending || !shipment ? (
         <Spinner />
       ) : (
+        // Main container
         <div className="divide-y divide-primary">
-          <h1 className="pb-2 text-lg font-semibold">{shipment.title}</h1>
+          {/* Heading */}
+          <h1 className="pb-2  font-bold text-center">{shipment.title}</h1>
+
+          {/* Sub-Container */}
           <div className="flex flex-col pb-2 space-y-2">
+            {/* ShipmentId and Date */}
             <div className="flex flex-col md:flex-row justify-between">
               <h3 className="text-primary">
                 {common.shipmentId}: {shipment.shipmentId}
@@ -60,116 +50,75 @@ export const ShipmentDetails = () => {
               </h3>
             </div>
 
-            <div className="flex flex-col">
-              <div className="flex flex-col md:flex-row justify-between">
-                <ShipmentProperty
-                  title={common.origin}
-                  data={shipment.origin}
-                  styleClass=""
-                />
-                <ShipmentProperty
-                  title={common.destination}
-                  data={shipment.destination}
-                  styleClass=""
-                />
-              </div>
-              <div className="flex flex-col md:flex-row justify-between">
+            {/* Shipment Address */}
+            <div className=" flex flex-col bg-light p-4 space-y-4 rounded md:flex-row md:space-x-4 md:space-y-0">
+              <ShipmentAddress
+                title={common.originAddress}
+                address={shipment.originAddress}
+                className="w-full"
+              />
+              <ShipmentAddress
+                title={common.destinationAddress}
+                address={shipment.destinationAddress}
+                className="w-full"
+              />
+            </div>
+
+            {/* Date, Delivery date, status */}
+            <div className="flex flex-col bg-light p-4 space-y-4 rounded md:flex-row md:space-x-4 md:space-y-0">
+              <div className="bg-secondary rounded p-2 w-full">
                 <ShipmentProperty
                   title={common.shipmentDate}
                   data={formatDate(shipment.date)}
                   styleClass=""
                 />
+              </div>
+              <div className="bg-secondary rounded p-2 w-full">
                 <ShipmentProperty
                   title={common.deliveryDate}
                   data={formatDate(shipment.deliveryDate)}
                   styleClass=""
                 />
               </div>
-
-              <div className="flex flex-col md:flex-row justify-between">
-                <ShipmentProperty
+              <div className="bg-secondary rounded p-2 w-full">
+                <ShipmentStatusProperty
                   title={common.status}
-                  data={shipment.status}
-                  styleClass=""
-                />
-                <ShipmentProperty
-                  title={common.houseNo}
-                  data={shipment.houseNo}
+                  status={shipment.status}
                   styleClass=""
                 />
               </div>
-              <div className="flex flex-col md:flex-row justify-between">
-                <ShipmentProperty
-                  title={common.address1}
-                  data={shipment.address1}
-                  styleClass=""
-                />
-                <ShipmentProperty
-                  title={common.address2}
-                  data={shipment.address2}
-                  styleClass=""
-                />
-              </div>
-              <div className="flex flex-col md:flex-row justify-between">
-                <ShipmentProperty
-                  title={common.state}
-                  data={shipment.destinationState}
-                  styleClass=""
-                />
-                <ShipmentProperty
-                  title={common.pinCode}
-                  data={shipment.destinationPincode}
-                  styleClass=""
-                />
-              </div>
-              <div className="flex flex-col md:flex-row justify-between">
+            </div>
+
+            {/* Actions */}
+            {shipment.actions && shipment.actions.length > 0 && (
+              <h1>{JSON.stringify(shipment.actions)}</h1>
+            )}
+
+            {/* Notes, Instructions */}
+            <div className="flex flex-col bg-light p-4 space-y-4 rounded md:flex-row md:space-x-4 md:space-y-0">
+              <div className="bg-secondary rounded p-2 w-full">
                 <ShipmentProperty
                   title={common.note}
                   data={shipment.notes}
                   styleClass=""
                 />
               </div>
-              <div className="flex flex-col md:flex-row justify-between">
+              <div className="bg-secondary rounded p-2 w-full">
                 <ShipmentProperty
                   title={common.instructions}
                   data={shipment.instructions}
                   styleClass=""
                 />
               </div>
-
-              {/* Staus buttons */}
-              <div className="mt-8 flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-2">
-                <Button
-                  title={common.transit}
-                  className="bg-primary w-full md:w-1/4"
-                  disabled={shipment.status !== ""}
-                  onClick={() =>
-                    handleStatusUpdate({ status: `${common.transit}` })
-                  }
-                />
-
-                <Button
-                  title={common.delayed}
-                  className="bg-primary w-full md:w-1/4"
-                  disabled={
-                    shipment.status === `${common.delayed}` ||
-                    shipment.status === `${common.delivered}`
-                  }
-                  onClick={() =>
-                    handleStatusUpdate({ status: `${common.delayed}` })
-                  }
-                />
-
-                <Button
-                  title={common.delivered}
-                  className="bg-primary w-full md:w-1/4"
-                  disabled={shipment.status === `${common.delivered}`}
-                  onClick={() =>
-                    handleStatusUpdate({ status: `${common.delivered}` })
-                  }
-                />
-              </div>
             </div>
+
+            {/* Status update */}
+            {shipment.status !== common.delivered && (
+              <UpdateStatusButton
+                title={common.updateStatus}
+                onClick={handleStatusUpdate}
+              />
+            )}
           </div>
         </div>
       )}

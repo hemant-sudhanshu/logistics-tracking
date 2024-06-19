@@ -71,6 +71,12 @@ export const strings = {
     status: {
       required: "Shipment status is required",
     },
+    action: {
+      required: "Shipment action is required",
+    },
+    location: {
+      required: "Shipment location is required",
+    },
   },
   auth: {
     common: {
@@ -118,16 +124,21 @@ export const strings = {
       about: "About",
       addNew: "+ Add New",
       addShipment: "Add Shipment",
+      addAction: "Add Action",
       addShipmentSuccess: "Shipment added succesfully!",
       id: "ID",
       shipmentId: "Shipment Id",
       date: "Date",
       title: "Title",
       all: "All",
+      action: "Action",
+      location: "Location",
       incoming: "Incoming",
       outgoing: "Outgoing",
       origin: "Origin",
       destination: "Destination",
+      originAddress: "Origin Address",
+      destinationAddress: "Destination Address",
       shipmentDate: "Shipment Date",
       deliveryDate: "Delivery Date",
       status: "Status",
@@ -146,8 +157,10 @@ export const strings = {
       selectStatus: "Select Status",
       destinationCity: "Destination City",
       selectCity: "Select City",
+      selectAction: "Select Action",
       shipmentAddSuccess: "Shipment added successfully!",
       shipmentUpdateSuccess: "Shipment updated successfully!",
+      updateStatus: "Update Status",
     },
     home: {
       title: "Home",

@@ -30,7 +30,6 @@ const useShipmentQuery = (reqQuery) => {
  */
 const useShipmentDetailsQuery = ({ id }) => {
   const api = useApi();
-  console.log(`id is: ${id}`);
 
   // Function to fetch shipments
   const getShipmentsList = async () => {
@@ -116,9 +115,45 @@ const useShipmentMutation = ({ id }) => {
   });
 };
 
+/**
+ * Custom hook for shipment action mutation.
+ *
+ * This hook handles the process of adding a new shipment by making a request to the API endpoint.
+ * It utilizes React Query for managing asynchronous data fetching and updating the UI based on the response.
+ */
+const useShipmentActionMutation = ({ id }) => {
+  /**
+   * useApi: A custom hook for accessing the API instance
+   */
+  const api = useApi();
+
+  /**
+   * updateShipment: Function for initiating the sign-up process
+   * @param shipmentReq The request object containing user information for a shipment
+   */
+  const updateShipment = async (shipmentReq) => {
+    try {
+      console.log("Shipment request", shipmentReq);
+      const response = await api.patch(
+        `${endPoints.primary.addAction}/${id}`,
+        shipmentReq
+      );
+      return response;
+    } catch (error) {
+      // Rethrow the error to be caught by the caller
+      throw error;
+    }
+  };
+
+  return useMutation({
+    mutationFn: updateShipment,
+  });
+};
+
 export {
   useShipmentQuery,
   useShipmentDetailsQuery,
   useShipmentsMutation,
   useShipmentMutation,
+  useShipmentActionMutation,
 };

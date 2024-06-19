@@ -1,6 +1,7 @@
 export const staticData = {
   cities: ["Delhi", "Patna", "Mumbai", "Pune", "Bangalore"],
-  statuses: ["Transit", "Delayed", "Delivered"],
+  statuses: ["Initiated", "Processed", "Picked", "Delivered", "Delayed"],
+  actions: ["Approved", "Processed", "Picked", "Delivered"],
   filterOptions: [
     {
       title: "All",

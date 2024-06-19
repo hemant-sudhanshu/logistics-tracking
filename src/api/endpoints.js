@@ -15,5 +15,6 @@ export const endPoints = {
   primary: {
     /** Get all shipments */
     shipments: "/shipments",
+    addAction: "/shipments/addAction",
   },
 };

@@ -70,8 +70,24 @@ export const ShipmentForm = () => {
     validationSchema: ShipmentSchema,
     onSubmit: async (values) => {
       // Call add shipment api
+      const newValue = {
+        shipmentId: values.shipmentId,
+        title: values.title,
+        deliveryDate: values.deliveryDate,
+        notes: values.notes,
+        instructions: values.instructions,
+        isIncoming: values.isIncoming,
+        destinationAddress: {
+          houseNo: values.houseNo,
+          address1: values.address1,
+          address2: values.address2,
+          city: values.destination,
+          state: values.destinationState,
+          pinCode: values.destinationPincode,
+        },
+      };
       try {
-        await mutateAsync(values);
+        await mutateAsync(newValue);
         formik.resetForm();
         // If shipment add succeeds, show success message
         showSuccessToast({ message: common.shipmentAddSuccess });
@@ -235,7 +251,7 @@ export const ShipmentForm = () => {
 
         <Button
           title={common.addShipment}
-          className="w-full p-2 bg-blue-500 text-white rounded mt-4"
+          className="w-full p-2 rounded mt-4"
           onClick={() => {
             console.log("Handling submit...");
             formik.handleSubmit();
