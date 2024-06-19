@@ -19,6 +19,10 @@ export const theme = {
       border: " #E8ECEF",
       white: "#FFFFFF",
       black: "#000000",
+      red: "#b91c1c",
+      yellow: "#eab308",
+      green: "#15803d",
+      teal: "#115e59",
     },
     padding: {
       navbar: "72px",

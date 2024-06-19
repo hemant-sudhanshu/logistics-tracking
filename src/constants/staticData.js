@@ -1,32 +1,50 @@
 export const staticData = {
   cities: ["Delhi", "Patna", "Mumbai", "Pune", "Bangalore"],
-  statuses: ["Transit", "Delayed", "Delivered"],
-  filterOptions: ["All", "Last Week", "Last Month", "Last Year"],
+  statuses: ["Initiated", "Processed", "Picked", "Delivered", "Delayed"],
+  actions: ["Approved", "Processed", "Picked", "Delivered"],
+  filterOptions: [
+    {
+      title: "All",
+      filterKey: "all",
+    },
+    {
+      title: "Last Week",
+      filterKey: "lastWeek",
+    },
+    {
+      title: "Last Month",
+      filterKey: "lastMonth",
+    },
+    {
+      title: "Last Year",
+      filterKey: "lastYear",
+    },
+  ],
   sortingOptions: [
     {
-      key: "Date ↓",
-      value: { date: -1 },
+      title: "Date ↓",
+      sortKey: "date-desc",
     },
     {
-      key: "Date ↑",
-      value: { date: 1 },
+      title: "Date ↑",
+      sortKey: "date-asc",
     },
     {
-      key: "Title ↓",
-      value: { title: -1 },
+      title: "Title ↓",
+      sortKey: "title-desc",
     },
     {
-      key: "Title ↑",
-      value: { title: 1 },
+      title: "Title ↑",
+      sortKey: "title-asc",
     },
 
     {
-      key: "ShipmentID ↓",
-      value: { shipmentId: -1 },
+      title: "ShipmentID ↓",
+      sortKey: "shipmentId-desc",
     },
     {
-      key: "ShipmentID ↑",
-      value: { shipmentId: 1 },
+      title: "ShipmentID ↑",
+      sortKey: "shipmentId-asc",
     },
   ],
 };
